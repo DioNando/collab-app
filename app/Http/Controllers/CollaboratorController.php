@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CollaboratorRequest;
+use App\Mail\ContactCollaborator;
 use App\Models\Collaborator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CollaboratorController extends Controller
 {
@@ -68,5 +70,11 @@ class CollaboratorController extends Controller
     {
         $collaborator->delete();
         return redirect()->route('collaborators.index')->with('success', 'Collaborator ' . $collaborator['name'] . ' deleted successfully');
+    }
+
+    public function contact(Collaborator $collaborator)
+    {
+        Mail::to($collaborator->email)->send(new ContactCollaborator($collaborator));
+        return redirect()->back()->with('success', 'Email sent to ' . $collaborator['name']);
     }
 }

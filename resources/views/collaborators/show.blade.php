@@ -19,6 +19,10 @@
                 </p>
             </div>
             <div class="flex justify-end gap-3">
+                <form action="{{ route('collaborators.contact', $collaborator) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="hover:text-blue-500">Contact</button>
+                </form>
                 <a class="hover:text-orange-500" href="{{ route('collaborators.edit', $collaborator) }}">Edit</a>
                 <form action="{{ route('collaborators.destroy', $collaborator) }}" method="POST">
                     @csrf
@@ -26,6 +30,10 @@
                     <button type="submit" class="hover:text-red-500">Delete</button>
                 </form>
             </div>
+            @if (session()->has('success'))
+                <div class="text-gray-500 my-4 p-3 bg-slate-300 border border-gray-500 rounded-md">{{ session('success') }}
+                </div>
+            @endif
         </div>
     </article>
 @endsection

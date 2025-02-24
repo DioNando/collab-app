@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::resource('collaborators', CollaboratorController::class);
+Route::post('collaborators/{collaborator}/contact', [CollaboratorController::class, 'contact'])->name('collaborators.contact');
