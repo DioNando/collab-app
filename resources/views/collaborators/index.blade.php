@@ -9,23 +9,26 @@
                 Collaborator</a>
         </div>
         @if (session()->has('success'))
-            <div class="text-gray-500 my-4 p-3 bg-slate-300 border border-gray-500 rounded-md">{{ session('success') }}</div>
+            <div class="text-sm text-gray-500 my-4 p-3 bg-slate-300 border border-gray-400 rounded-md">
+                {{ session('success') }}</div>
         @endif
         @forelse ($collaborators as $collaborator)
-            <div class="flex flex-col mb-4 pb-2 border-b border-gray-200">
+            <div x-data x-on:click="window.location.href='{{ route('collaborators.show', $collaborator) }}'"
+                class="collaborator flex flex-col mb-4 pb-2 border-b border-gray-200">
                 <div class="flex flex-col">
-                    <div class="flex justify-between">
-                        <a class="text-lg hover:text-blue-500"
+                    <div class="flex items-center justify-between">
+                        <a class="collaborator__name text-lg"
                             href="{{ route('collaborators.show', $collaborator) }}">{{ $collaborator->name }}</a>
                         <div @class([
-                            'text-gray-500 text-sm',
-                            'text-green-500' => $collaborator->status == 'active',
+                            'bg-gray-100 text-gray-800 text-sm font-medium px-2.5 pb-1 rounded-full',
+                            'bg-green-100 text-green-800 text-sm font-medium px-2.5 pb-1 rounded-full' =>
+                                $collaborator->status == 'active',
                         ])>{{ $collaborator->status }}</div>
                     </div>
-                    <span class="text-caption text-gray-500">{{ $collaborator->email }}</span>
+                    <span class="text-md text-gray-500">{{ $collaborator->email }}</span>
                 </div>
-                <div>
-                    <a class="text-gray-700 hover:text-orange-500"
+                <div class="mt-2">
+                    <a class="text-gray-500 hover:text-orange-500"
                         href="{{ route('collaborators.edit', $collaborator) }}">Edit</a>
                 </div>
             </div>
@@ -45,4 +48,18 @@
 @endsection
 
 @section('styles')
+    <style>
+        .collaborator {
+            transition: 250ms;
+        }
+
+        .collaborator:hover {
+            transform: translateX(1rem);
+            cursor: pointer;
+        }
+
+        .collaborator:hover .collaborator__name {
+            @apply text-blue-500
+        }
+    </style>
 @endsection

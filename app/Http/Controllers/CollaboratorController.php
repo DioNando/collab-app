@@ -82,10 +82,10 @@ class CollaboratorController extends Controller
     {
         if ($collaborator->status == 'inactive') {
             $collaborator->update(['status' => 'active']);
-            return redirect()->back()->with('success', 'Collaborator ' . $collaborator['name'] . ' marked as active');
+            return redirect()->back()->with('success', $collaborator['name'] . ' marked as active');
         } else {
             $collaborator->update(['status' => 'inactive']);
-            return redirect()->back()->with('success', 'Collaborator ' . $collaborator['name'] . ' marked as inactive');
+            return redirect()->back()->with('success', $collaborator['name'] . ' marked as inactive');
         }
     }
 }
