@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::resource('collaborators', CollaboratorController::class);
 Route::post('collaborators/{collaborator}/contact', [CollaboratorController::class, 'contact'])->name('collaborators.contact');
+Route::put('collaborators/{collaborator}/toggle-status', [CollaboratorController::class, 'toggleStatus'])->name('collaborators.toggle-status');

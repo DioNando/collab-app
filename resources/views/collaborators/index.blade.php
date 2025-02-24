@@ -12,13 +12,17 @@
             <div class="text-gray-500 my-4 p-3 bg-slate-300 border border-gray-500 rounded-md">{{ session('success') }}</div>
         @endif
         @forelse ($collaborators as $collaborator)
-            <div class="flex flex-col mb-3 pb-2 border-b border-gray-200">
+            <div class="flex flex-col mb-4 pb-2 border-b border-gray-200">
                 <div class="flex flex-col">
-                    <a class="text-lg hover:text-blue-500"
-                        href="{{ route('collaborators.show', $collaborator) }}">{{ $collaborator->name }}</a>
+                    <div class="flex justify-between">
+                        <a class="text-lg hover:text-blue-500"
+                            href="{{ route('collaborators.show', $collaborator) }}">{{ $collaborator->name }}</a>
+                        <div @class([
+                            'text-gray-500 text-sm',
+                            'text-green-500' => $collaborator->status == 'active',
+                        ])>{{ $collaborator->status }}</div>
+                    </div>
                     <span class="text-caption text-gray-500">{{ $collaborator->email }}</span>
-                    <div class="text-gray-500 text-sm">{{ $collaborator->status }}</div>
-
                 </div>
                 <div>
                     <a class="text-gray-700 hover:text-orange-500"

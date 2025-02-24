@@ -77,4 +77,15 @@ class CollaboratorController extends Controller
         Mail::to($collaborator->email)->send(new ContactCollaborator($collaborator));
         return redirect()->back()->with('success', 'Email sent to ' . $collaborator['name']);
     }
+
+    public function toggleStatus(Collaborator $collaborator)
+    {
+        if ($collaborator->status == 'inactive') {
+            $collaborator->update(['status' => 'active']);
+            return redirect()->back()->with('success', 'Collaborator ' . $collaborator['name'] . ' marked as active');
+        } else {
+            $collaborator->update(['status' => 'inactive']);
+            return redirect()->back()->with('success', 'Collaborator ' . $collaborator['name'] . ' marked as inactive');
+        }
+    }
 }

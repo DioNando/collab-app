@@ -7,7 +7,7 @@
         Collaborators</a>
     <form action="{{ route('collaborators.store') }}" method="POST" class="mt-6">
         @csrf
-        <div class="flex flex-col gap-2 border-b border-gray-200 mb-3 pb-3">
+        <div class="flex flex-col gap-2 border-b border-gray-200 mb-3 pb-6">
             <div class="flex flex-col gap-4">
                 {{-- Add inputs --}}
                 <div class="flex flex-col gap-2">
