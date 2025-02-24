@@ -33,7 +33,7 @@ class CollaboratorController extends Controller
     public function store(CollaboratorRequest $request)
     {
         $request->validated();
-        Collaborator::created($request->all());
+        Collaborator::create($request->all());
         return redirect()->route('collaborators.index')->with('success', 'Collaborator ' . $request['name'] . ' created successfully');
     }
 
@@ -56,11 +56,11 @@ class CollaboratorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Collaborator $collaborator)
+    public function update(CollaboratorRequest $request, Collaborator $collaborator)
     {
         $request->validated();
         $collaborator->update($request->all());
-        return redirect()->route('collaborators.index')->with('success', 'Collaborator ' . $collaborator['name'] . ' updated successfully');
+        return redirect()->route('collaborators.show', compact('collaborator'))->with('success', 'Collaborator ' . $collaborator['name'] . ' updated successfully');
     }
 
     /**

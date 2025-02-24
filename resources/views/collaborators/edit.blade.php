@@ -9,14 +9,29 @@
         @csrf
         @method('PUT')
         <div class="flex flex-col gap-2 border-b border-gray-200 mb-3 pb-3">
-            <div class="flex flex-col">
-                <a class="text-lg" href="{{ route('collaborators.show', $collaborator) }}">{{ $collaborator->name }}</a>
-                <span class="text-caption text-gray-500">{{ $collaborator->email }}</span>
-                <p class="text-gray-500 text-sm">
-                    Created:
-                    {{ $collaborator->created_at->diffForHumans() }} &middot; Modified:
-                    {{ $collaborator->updated_at->diffForHumans() }}
-                </p>
+            <div class="flex flex-col gap-4">
+                {{-- Add inputs --}}
+                <div class="flex flex-col gap-2">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="{{ $collaborator->name }}">
+                    @error('name')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="{{ $collaborator->email }}">
+                    @error('email')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" value="{{ $collaborator->phone }}">
+                    @error('phone')
+                        <div class="text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
         </div>
         <div class="flex justify-end gap-3">
