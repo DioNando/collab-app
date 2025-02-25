@@ -21,7 +21,7 @@ services:
         networks:
             - laravel
 
-    node:
+    vite:
         image: node:18
         restart: unless-stopped
         working_dir: /var/www

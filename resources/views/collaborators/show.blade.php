@@ -25,22 +25,51 @@
         </div>
         <hr class="my-4">
         <div class="flex justify-end gap-3">
+            {{-- Toggle Status --}}
             <form action="{{ route('collaborators.toggle-status', $collaborator) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="text-gray-500 hover:text-gray-600">Mark as
-                    {{ $collaborator->status == 'active' ? 'inactive' : 'active' }}</button>
+                <button type="submit"
+                    class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
+                    <x-heroicon-s-bolt
+                        class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
+                    <div class="text-sm text-gray-900 dark:text-white">
+                        Mark as {{ $collaborator->status == 'active' ? 'inactive' : 'active' }}
+                    </div>
+                </button>
             </form>
+
+            {{-- Contact --}}
             <form action="{{ route('collaborators.contact', $collaborator) }}" method="POST">
                 @csrf
-                <button type="submit" class="hover:text-blue-500">Contact</button>
+                <button type="submit"
+                    class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
+                    <x-heroicon-s-envelope
+                        class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
+                    <div class="text-sm text-gray-900 dark:text-white">Contact</div>
+                </button>
             </form>
-            <a class="hover:text-orange-500" href="{{ route('collaborators.edit', $collaborator) }}">Edit</a>
+
+            {{-- Edit --}}
+            <a href="{{ route('collaborators.edit', $collaborator) }}"
+                class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
+                <x-heroicon-s-pencil
+                    class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
+                <div class="text-sm text-gray-900 dark:text-white">Edit</div>
+            </a>
+
+            {{-- Delete --}}
             <form action="{{ route('collaborators.destroy', $collaborator) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="hover:text-red-500">Delete</button>
+                <button type="submit"
+                    class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
+                    <x-heroicon-s-trash
+                        class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-red-500 dark:text-gray-400 dark:group-hover:text-red-400" />
+                    <div class="text-sm text-gray-900 dark:text-white">Delete</div>
+                </button>
             </form>
+
         </div>
         @if (session()->has('success'))
             <div class="text-gray-500 text-sm mt-4 p-3 bg-slate-300 border border-gray-400 rounded-md">

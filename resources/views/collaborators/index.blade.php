@@ -5,7 +5,9 @@
 @section('content')
     <div>
         <div class="flex justify-start mb-6">
-            <a class="text-green-500 hover:text-green-700 underline" href="{{ route('collaborators.create') }}">Add New
+
+            <a class="px-3 py-2 flex items-center gap-2 text-white rounded-lg bg-green-500 hover:bg-green-700 text-medium"
+                href="{{ route('collaborators.create') }}"><x-heroicon-s-plus class="w-6 h-6" /> Add New
                 Collaborator</a>
         </div>
         @if (session()->has('success'))
@@ -63,3 +65,6 @@
         }
     </style>
 @endsection
+
+
+
