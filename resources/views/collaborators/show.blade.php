@@ -3,8 +3,7 @@
 @section('title', $collaborator->name)
 
 @section('content')
-    <a class="text-medium text-gray-500 hover:text-blue-500 underline" href="{{ route('collaborators.index') }}">Go Back To
-        Collaborators</a>
+    <a class="text-medium text-gray-500 hover:text-blue-500 underline" href="{{ route('collaborators.index') }}">Retour à la liste</a>
     <article class="flex flex-col mt-6 w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8">
         <div class="flex flex-col gap-2">
             <div class="flex items-center justify-between">
@@ -31,10 +30,10 @@
                 @method('PUT')
                 <button type="submit"
                     class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
-                    <x-heroicon-s-bolt
+                    <x-heroicon-s-arrows-right-left
                         class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
                     <div class="text-sm text-gray-900 dark:text-white">
-                        Mark as {{ $collaborator->status == 'active' ? 'inactive' : 'active' }}
+                        Status {{ $collaborator->status == 'active' ? 'Inactif' : 'Actif' }}
                     </div>
                 </button>
             </form>
@@ -46,7 +45,7 @@
                     class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
                     <x-heroicon-s-envelope
                         class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
-                    <div class="text-sm text-gray-900 dark:text-white">Contact</div>
+                    <div class="text-sm text-gray-900 dark:text-white">Contacter</div>
                 </button>
             </form>
 
@@ -55,7 +54,7 @@
                 class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                 <x-heroicon-s-pencil
                     class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" />
-                <div class="text-sm text-gray-900 dark:text-white">Edit</div>
+                <div class="text-sm text-gray-900 dark:text-white">Modifier</div>
             </a>
 
             {{-- Delete --}}
@@ -66,7 +65,7 @@
                     class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group w-full">
                     <x-heroicon-s-trash
                         class="mx-auto mb-1 w-5 h-5 text-gray-400 group-hover:text-red-500 dark:text-gray-400 dark:group-hover:text-red-400" />
-                    <div class="text-sm text-gray-900 dark:text-white">Delete</div>
+                    <div class="text-sm text-gray-900 dark:text-white">Supprimer</div>
                 </button>
             </form>
 

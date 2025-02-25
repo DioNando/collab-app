@@ -6,10 +6,10 @@
     <title>Contact</title>
 </head>
 <body>
-    <p>Hello {{ $collaborator->name }},</p>
+    <p>Bonjour {{ $collaborator->name }},</p>
 
-    <p>We are contacting you to inform you about our new offers and services.</p>
+    <p>Nous vous contactons pour vous informer de nos nouvelles offres et services.</p>
 
-    <p>Best regards,<br>The team</p>
+    <p>Cordialement,<br>L'équipe</p>
 </body>
 </html>

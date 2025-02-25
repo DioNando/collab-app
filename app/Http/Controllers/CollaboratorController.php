@@ -34,7 +34,7 @@ class CollaboratorController extends Controller
     {
         $request->validated();
         Collaborator::create($request->all());
-        return redirect()->route('collaborators.index')->with('success', 'Collaborator ' . $request['name'] . ' created successfully');
+        return redirect()->route('collaborators.index')->with('success', 'Collaborateur ' . $request['name'] . ' créé avec succès');
     }
 
     /**
@@ -60,7 +60,7 @@ class CollaboratorController extends Controller
     {
         $request->validated();
         $collaborator->update($request->all());
-        return redirect()->route('collaborators.show', compact('collaborator'))->with('success', 'Collaborator ' . $collaborator['name'] . ' updated successfully');
+        return redirect()->route('collaborators.show', compact('collaborator'))->with('success', 'Collaborateur ' . $collaborator['name'] . ' mis à jour avec succès');
     }
 
     /**
@@ -69,23 +69,23 @@ class CollaboratorController extends Controller
     public function destroy(Collaborator $collaborator)
     {
         $collaborator->delete();
-        return redirect()->route('collaborators.index')->with('success', 'Collaborator ' . $collaborator['name'] . ' deleted successfully');
+        return redirect()->route('collaborators.index')->with('success', 'Collaborateur ' . $collaborator['name'] . ' supprimé avec succès');
     }
 
     public function contact(Collaborator $collaborator)
     {
         Mail::to($collaborator->email)->send(new ContactCollaborator($collaborator));
-        return redirect()->back()->with('success', 'Email sent to ' . $collaborator['name']);
+        return redirect()->back()->with('success', 'Email envoyé à ' . $collaborator['name']);
     }
 
     public function toggleStatus(Collaborator $collaborator)
     {
         if ($collaborator->status == 'inactive') {
             $collaborator->update(['status' => 'active']);
-            return redirect()->back()->with('success', $collaborator['name'] . ' marked as active');
+            return redirect()->back()->with('success', $collaborator['name'] . ' marqué comme actif');
         } else {
             $collaborator->update(['status' => 'inactive']);
-            return redirect()->back()->with('success', $collaborator['name'] . ' marked as inactive');
+            return redirect()->back()->with('success', $collaborator['name'] . ' marqué comme inactif');
         }
     }
 }

@@ -3,8 +3,7 @@
 @section('title', 'Edit Collaborator')
 
 @section('content')
-    <a class="text-medium text-gray-500 hover:text-blue-500 underline" href="{{ route('collaborators.index') }}">Go Back To
-        Collaborators</a>
+    <a class="text-medium text-gray-500 hover:text-blue-500 underline" href="{{ route('collaborators.index') }}">Retour à la liste</a>
     <div class="flex flex-col mt-6 w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8">
         <form action="{{ route('collaborators.update', $collaborator) }}" method="POST">
             @csrf
@@ -40,7 +39,7 @@
             </div>
             <hr class="mt-6 mb-4">
             <div class="flex justify-end gap-3">
-                <button type="submit" class="hover:text-orange-500">Update</button>
+                <button type="submit" class="hover:text-orange-500">Mette à jour</button>
             </div>
         </form>
     </div>
